@@ -56,7 +56,14 @@ Welcome to the extra storage space! This is where all
 obstacles are stored such as: barrels, cones, and poles.
 """
 Paddock_description = """
-Welcome to teh paddock! This is where your horse roams
+Welcome to the paddock! This is where your horse roams
 when they aren't being used. It includes water troughs,
 hay nets, and a hose. 
 """
+print (f"{Intro}")
+print (f"{Map}")
+Horse_name = input("What is your horse's name?")
+Horse_gender = input("What gender is your horse? (F-emale or M-ale)")
+while Horse_gender != ('F', 'Female', 'M', 'Male'):
+    print ("Invalid input, please try again.")
+    Horse_gender = input("What gender is your horse? (F-emale or M-ale)")
