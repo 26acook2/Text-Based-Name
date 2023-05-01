@@ -67,3 +67,24 @@ Horse_gender = input("What gender is your horse? (F-emale or M-ale)")
 while Horse_gender != ('F', 'Female', 'M', 'Male'):
     print ("Invalid input, please try again.")
     Horse_gender = input("What gender is your horse? (F-emale or M-ale)")
+    
+    quit = ('quit','q')
+    run = ('run','r')
+    test = ('test','t')
+    choice = ''
+
+while choice not in quit:
+	print("Run - Run students.py program")
+	print("Test - Run tests on student.py program")
+	print("Quit - exit program")
+	choice = input("Choose an option:\n").lower()
+	if choice in run:
+		print("<----Starting Program---->")
+		student.main()
+		print("<----Program Complete---->")
+	elif choice in test:
+		unittest.main(module='tests', failfast=True)
+	elif choice in quit:
+		print("Goodbye.")
+	else:
+		print("Invalid selection.")
