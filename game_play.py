@@ -4,7 +4,7 @@ map = """
            |    Arena    |_______
  __________|_____________|       | 
 |          |      |      | X-tra | 
-|   Barn   | Round| Pens |Storage|
+|   Barn   | Round Pens  |Storage|
 |__________|______|______|_______|
 |                                |
 |                                |
