@@ -1,7 +1,8 @@
-Map = """
-            _____________
-           |             |
-           |    Arena    |_______
+def main():
+	Map = """
+     	    _____________
+     	   |             |
+	   |    Arena    |_______
  __________|_____________|       | 
 |          |      |      | Extra | 
 |   Barn   | Round Pens  |Storage|
@@ -10,8 +11,8 @@ Map = """
 |                                |
 |             Paddock            |
 |________________________________|
-"""
-Intro = """
+	"""
+	Intro = """
 Welcome to the equestrian game simulator!
 In this game you will become an equestrian,
 and take part in their daily lives. The 
@@ -20,13 +21,13 @@ and deal with the problems that may arise.
 You also want to take care of yourself, and
 allow time for riding! This game ends at the
 end of the day. Good luck!
-"""
-Arena_description = """
+	"""
+	Arena_description = """
 Welcome to the arena! This is where you will ride,
 tack up, brush, and more! The arena includes a tying 
 post, mats, and a hose/sprinkler. 
-"""
-Barn_description = """
+	"""
+	Barn_description = """
 Welcome to the barn! This is where all necessary 
 equipment is stored such as: tack, food, treats, etc.
 It includes:
@@ -44,47 +45,27 @@ It includes:
 -hay
 -grain
 -treats
-"""
-Round_Pen_description = """
+	"""
+	Round_Pen_description = """
 Welcome to the round pens! This is where you can round
 pen your horses, either to warm up, or to excersise them.
 You may also use them if your horse needs to be isolated.
 There are no items in them. 
-"""
-Extra_storage_description = """
+	"""
+	Extra_storage_description = """
 Welcome to the extra storage space! This is where all
 obstacles are stored such as: barrels, cones, and poles.
-"""
-Paddock_description = """
+	"""
+	Paddock_description = """
 Welcome to the paddock! This is where your horse roams
 when they aren't being used. It includes water troughs,
 hay nets, and a hose. 
-"""
-print (f"{Intro}")
-print (f"{Map}")
-Horse_name = input("What is your horse's name?")
-Horse_gender = input("What gender is your horse? (F-emale or M-ale)")
-while Horse_gender != ('F', 'Female', 'M', 'Male'):
-    print ("Invalid input, please try again.")
-    Horse_gender = input("What gender is your horse? (F-emale or M-ale)")
-    
-    quit = ('quit','q')
-    run = ('run','r')
-    test = ('test','t')
-    choice = ''
+	"""
+	print (f"{Intro}")
+	print (f"{Map}")
+	Horse_name = input("What is your horse's name?")
+	Horse_gender = input("What gender is your horse? (F-emale or M-ale)")
+	while Horse_gender not in ('F', 'Female', 'M', 'Male'):
+		print ("Invalid input, please try again.")
+		Horse_gender = input("What gender is your horse? (F-emale or M-ale)")
 
-while choice not in quit:
-	print("Run - Run students.py program")
-	print("Test - Run tests on student.py program")
-	print("Quit - exit program")
-	choice = input("Choose an option:\n").lower()
-	if choice in run:
-		print("<----Starting Program---->")
-		student.main()
-		print("<----Program Complete---->")
-	elif choice in test:
-		unittest.main(module='tests', failfast=True)
-	elif choice in quit:
-		print("Goodbye.")
-	else:
-		print("Invalid selection.")
