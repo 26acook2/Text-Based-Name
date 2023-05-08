@@ -91,6 +91,7 @@ R-ound Pens
 """)
 	if choice.upper() in ('B', 'BARN'):
 		Barn(Barn_description, inventory)
+def Paddock(Paddock_description, inventory):
 def Barn(Barn_description, inventory):
 	print (f"{Barn_description}")
 	grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)\n")
