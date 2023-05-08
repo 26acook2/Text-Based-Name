@@ -1,5 +1,6 @@
 def main():
 	inventory = []
+	Horse = False
 	Map = """
      	    _____________
      	   |             |
@@ -91,7 +92,22 @@ R-ound Pens
 """)
 	if choice.upper() in ('B', 'BARN'):
 		Barn(Barn_description, inventory)
-def Paddock(Paddock_description, inventory):
+
+def Paddock(Paddock_description, inventory, Horse, Horse_name, Horse_pronoun_her_him):
+	print (f"{Paddock_description}")
+	if Horse == False:
+		catch_choice = input(f"Do you want to catch {Horse_name}?\n(Y-es or N-o)")
+		if catch_choice.upper() in ('Y', 'YES'):
+			if 'halter' in inventory:
+				if 'lead rope' in inventory:
+					print(f"Good job, you had the halter and lead rope to catch {Horse_name}! You are now leading {Horse_pronoun_her_him}")
+					Horse == True
+				else:
+					print(f"You have a halter to put on {Horse_name}, but nothing to lead {Horse_pronoun_her_him} with. Go grab a leadrope!")
+			elif 'halter' not in inventory:
+				print(f"Sorry, but you don't have a halter to use! Go grab the equipment to lead {Horse_name} with!")
+	if Horse == True:
+		release_choice = input(f"Do you want to releaes {Horse_name} in the paddock")
 def Barn(Barn_description, inventory):
 	print (f"{Barn_description}")
 	grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)\n")
