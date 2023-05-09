@@ -82,7 +82,9 @@ and you know it's time to wake up and get a start on the day.
 Let's get to work with {Horse_name}! Go catch {horse_pronoun_her_him}!
 (Remember, you need a halter and leadrope to catch {horse_pronoun_her_him})
 """)
-	choice = input("""
+	
+	while Horse == False:
+		choice = input("""
 Where do you want to go?
 A-rena
 B-arn
@@ -90,24 +92,46 @@ E-xtra Storage
 P-addock
 R-ound Pens
 """)
-	if choice.upper() in ('B', 'BARN'):
-		Barn(Barn_description, inventory)
-
+		if choice.upper() in ('B', 'BARN'):
+			Barn(Barn_description, inventory)
+		elif choice.upper() in ('P', 'PADDOCK'):
+			Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		if Horse == True:
+			break
+	
 def Paddock(Paddock_description, inventory, Horse, Horse_name, Horse_pronoun_her_him):
 	print (f"{Paddock_description}")
+	while Horse is True:
+		release_choice = input(f"Do you want to releaes {Horse_name} in the paddock\n(Y-es or N-o)\n")
+		if release_choice in ('Y' 'YES'):
+			print(f"{Horse_name} is now in the paddock!")
+			Horse = False
+		elif release_choice in ('N', 'NO'):
+			print(f"OK, you are still leading {Horse_name}")
+		else:
+			print("Sorry, that wasn't a valid choice please try again.")
 	if Horse == False:
-		catch_choice = input(f"Do you want to catch {Horse_name}?\n(Y-es or N-o)")
+		catch_choice = input(f"Do you want to catch {Horse_name}?\n(Y-es or N-o)\n")
 		if catch_choice.upper() in ('Y', 'YES'):
 			if 'halter' in inventory:
 				if 'lead rope' in inventory:
-					print(f"Good job, you had the halter and lead rope to catch {Horse_name}! You are now leading {Horse_pronoun_her_him}")
+					print(f"Good job, you had the halter and lead rope to catch {Horse_name}! You are now leading {Horse_pronoun_her_him}.")
 					Horse == True
+					return Horse
 				else:
 					print(f"You have a halter to put on {Horse_name}, but nothing to lead {Horse_pronoun_her_him} with. Go grab a leadrope!")
 			elif 'halter' not in inventory:
 				print(f"Sorry, but you don't have a halter to use! Go grab the equipment to lead {Horse_name} with!")
-	if Horse == True:
-		release_choice = input(f"Do you want to releaes {Horse_name} in the paddock")
+		while catch_choice.upper() in ('N', 'NO'):
+			stay_choice = input("OK, would you like to stay or leave the paddock?\n(S-tay or L-eave)")
+			if stay_choice.upper() in ('S', 'STAY'):
+				"Ok, you are staying in the paddock."
+			elif stay_choice.upper() in ('L', 'LEAVE'):
+				print("OK, you are leaving the paddock.")
+				catch_choice = 'NA'
+
+
+
 def Barn(Barn_description, inventory):
 	print (f"{Barn_description}")
 	grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)\n")
