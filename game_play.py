@@ -64,12 +64,12 @@ hay nets, and a hose.
 	"""
 	print (f"{Intro}")
 	print (f"{Map}")
-	Horse_name = input("What is your horse's name?")
-	Horse_gender = input("What gender is your horse? (F-emale or M-ale)")
-	while Horse_gender.upper not in ('F', 'FEMALE', 'M', 'MALE'):
+	Horse_name = input("What is your horse's name?\n")
+	Horse_gender = input("What gender is your horse? (F-emale or M-ale)\n")
+	while Horse_gender.upper() not in ('F', 'FEMALE', 'M', 'MALE'):
 		print ("Invalid input, please try again.")
-		Horse_gender = input("What gender is your horse? (F-emale or M-ale)")
-	if Horse_gender.upper in ('F', 'FEMALE'):
+		Horse_gender = input("What gender is your horse? (F-emale or M-ale)\n")
+	if Horse_gender.upper() in ('F', 'FEMALE'):
 		horse_pronoun_her_him = 'her'
 		horse_pronoun_she_he = 'she'
 	else:
@@ -89,10 +89,12 @@ E-xtra Storage
 P-addock
 R-ound Pens
 """)
-
+	if choice.upper() in ('B', 'BARN'):
+		Barn(Barn_description, inventory)
+def Paddock(Paddock_description, inventory):
 def Barn(Barn_description, inventory):
 	print (f"{Barn_description}")
-	grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)")
+	grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)\n")
 	if grab_yn.upper() in ('Y', 'YES'):
 		what_grab = input("""
 What do you want to grab?
@@ -107,38 +109,52 @@ BC-breast collar
 BR-brushes
 HP-hoof picks
 SC-shampoo/conditioner
-H-hay
+HY-hay
 G-grain
 T-treats
 """)
 		if what_grab.upper() in ('H', 'HALTER'):
 			inventory.append('halter')
+			print ("A halter has been added to your inventory!")
 		elif what_grab.upper() in ('LR', 'LEAD ROPE'):
 			inventory.append('lead rope')
+			print ("A lead rope has been added to your inventory!")
 		elif what_grab.upper() in ('LL', 'LUNGE LINE'):
 			inventory.append('lunge line')
+			print ("A lunge line has been added to your inventory!")
 		elif what_grab.upper() in ('B', 'BRIDLE'):
 			inventory.append('bridle')
+			print ("A bridle has been added to your inventory!")
 		elif what_grab.upper() in ('S', 'SADDLE'):
 			inventory.append('saddle')
+			print ("A saddle has been added to your inventory!")
 		elif what_grab.upper() in ('SP', 'SADDLE PAD'):
 			inventory.append('saddle pad')
+			print ("A saddle pad has been added to your inventory!")
 		elif what_grab.upper() in ('SN', 'SINCH'):
 			inventory.append('sinch')
+			print ("A sinch has been added to your inventory!")
 		elif what_grab.upper() in ('BC', 'BREAST COLLAR'):
 			inventory.append('breast collar')
+			print ("A breast collar has been added to your inventory!")
 		elif what_grab.upper() in ('BR', 'BRUSHES'):
 			inventory.append('brushes')
+			print ("Brushes have been added to your inventory!")
 		elif what_grab.upper() in ('HP', 'HOOF PICKS'):
 			inventory.append('hoof picks')
+			print ("A hoof pick has been added to your inventory!")
 		elif what_grab.upper() in ('SC', 'SHAMPOO/CONDITIONER'):
 			inventory.append('shampoo/conditioner')
-		elif what_grab.upper() in ('H', 'HAY'):
+			print ("Shampoo and conditioner have been added to your inventory!")
+		elif what_grab.upper() in ('HY', 'HAY'):
 			inventory.append('hay')
+			print ("Hay has been added to your inventory!")
 		elif what_grab.upper() in ('G', 'GRAIN'):
 			inventory.append('grain')
+			print ("Grain has been added to your inventory!")
 		elif what_grab.upper() in ('T', 'TREATS'):
 			inventory.append('treats')
+			print ("Treats have been added to your inventory!")
 		else:
 			print("Sorry, that wasn't a valid choice. Please try again!")
 			what_grab = input("""
@@ -154,20 +170,24 @@ BC-breast collar
 BR-brushes
 HP-hoof picks
 SC-shampoo/conditioner
-H-hay
+HY-hay
 G-grain
 T-treats
 """)
 	elif grab_yn.upper() in ('N', 'NO'):
 		print("OK, nothing was added to your inventory.")
-	stay_ask = print("""
-	Do you want to stay in the barn, or leave?
-	S-tay
-	L-eave
-	""")
+	else:
+		print("Sorry, that wasn't a valid choice. Please try again!")
+		grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)\n")
+	stay_ask = input("""
+Do you want to stay in the barn, or leave?
+S-tay
+L-eave
+""")
+
 	while stay_ask.upper() in ('S', 'STAY'):
 		print("OK, you are staying in the barn.")
-		grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)")
+		grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)\n")
 		if grab_yn.upper() in ('Y', 'YES'):
 			what_grab = input("""
 What do you want to grab?
@@ -182,38 +202,52 @@ BC-breast collar
 BR-brushes
 HP-hoof picks
 SC-shampoo/conditioner
-H-hay
+HY-hay
 G-grain
 T-treats
 """)
 			if what_grab.upper() in ('H', 'HALTER'):
 				inventory.append('halter')
+				print ("A halter has been added to your inventory!")
 			elif what_grab.upper() in ('LR', 'LEAD ROPE'):
 				inventory.append('lead rope')
+				print ("A lead rope has been added to your inventory!")
 			elif what_grab.upper() in ('LL', 'LUNGE LINE'):
 				inventory.append('lunge line')
+				print ("A lunge line has been added to your inventory!")
 			elif what_grab.upper() in ('B', 'BRIDLE'):
 				inventory.append('bridle')
+				print ("A bridle has been added to your inventory!")
 			elif what_grab.upper() in ('S', 'SADDLE'):
 				inventory.append('saddle')
+				print ("A saddle has been added to your inventory!")
 			elif what_grab.upper() in ('SP', 'SADDLE PAD'):
 				inventory.append('saddle pad')
+				print ("A saddle pad has been added to your inventory!")
 			elif what_grab.upper() in ('SN', 'SINCH'):
 				inventory.append('sinch')
+				print ("A sinch has been added to your inventory!")
 			elif what_grab.upper() in ('BC', 'BREAST COLLAR'):
 				inventory.append('breast collar')
+				print ("A breast collar has been added to your inventory!")
 			elif what_grab.upper() in ('BR', 'BRUSHES'):
 				inventory.append('brushes')
+				print ("Brushes have been added to your inventory!")
 			elif what_grab.upper() in ('HP', 'HOOF PICKS'):
 				inventory.append('hoof picks')
+				print ("A hoof pick has been added to your inventory!")
 			elif what_grab.upper() in ('SC', 'SHAMPOO/CONDITIONER'):
 				inventory.append('shampoo/conditioner')
-			elif what_grab.upper() in ('H', 'HAY'):
+				print ("Shampoo and conditioner have been added to your inventory!")
+			elif what_grab.upper() in ('HY', 'HAY'):
 				inventory.append('hay')
+				print ("Hay has been added to your inventory!")
 			elif what_grab.upper() in ('G', 'GRAIN'):
 				inventory.append('grain')
+				print ("Grain has been added to your inventory!")
 			elif what_grab.upper() in ('T', 'TREATS'):
 				inventory.append('treats')
+				print ("Treats have been added to your inventory!")
 			else:
 				print("Sorry, that wasn't a valid choice. Please try again!")
 				what_grab = input("""
@@ -235,9 +269,13 @@ T-treats
 """)
 		elif grab_yn.upper() in ('N', 'NO'):
 			print("OK, nothing was added to your inventory.")
-		stay_ask = print("""
-		Do you want to stay in the barn, or leave?
-		S-tay
-		L-eave
-		""")
-	if stay_ask.upper() in ('L', 'LEAVE'):
+		else:
+			print("Sorry, that wasn't a valid choice. Please try again!")
+			grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)\n")
+		stay_ask = input("""
+Do you want to stay in the barn, or leave?
+S-tay
+L-eave
+""")
+		if stay_ask.upper() in ('L', 'LEAVE'):
+			print("OK, you are leaving the barn.")
