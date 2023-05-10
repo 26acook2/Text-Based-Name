@@ -494,6 +494,8 @@ L-eave
 """)
 		if stay_ask.upper() in ('L', 'LEAVE'):
 			print("OK, you are leaving the round pens.")
+
+
 def main():
 	Horse = False
 	inventory = []
