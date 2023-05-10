@@ -424,6 +424,12 @@ L-eave
 """)
 		if stay_ask.upper() in ('L', 'LEAVE'):
 			print("OK, you are leaving storage.")
+def Round_Pens(Round_Pen_Description, Horse, Horse_name, horse_pronoun_her_him):
+	print (f"{Round_Pen_Description}")
+	if Horse == True:
+		print('')
+	elif Horse == False:
+		print(f"Sorry, but you don't have a horse to lunge. Go grab {Horse_name} and try again!")
 def main():
 	Horse = False
 	inventory = []
@@ -477,7 +483,6 @@ It includes:
 	Round_Pen_description = """
 Welcome to the round pens! This is where you can round
 pen your horses, either to warm up, or to excersise them.
-You may also use them if your horse needs to be isolated.
 There are no items in them. 
 	"""
 	Extra_storage_description = """
