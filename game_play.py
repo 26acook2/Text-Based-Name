@@ -322,6 +322,108 @@ L-eave
 """)
 		if stay_ask.upper() in ('L', 'LEAVE'):
 			print("OK, you are leaving the barn.")
+def Extra_Storage(Extra_storage_description, inventory):
+	print (f"{Extra_storage_description}")
+	grab_yn = input("Do you want to grab something from storage?\n(Y-es or N-o)\n")
+	if grab_yn.upper() in ('Y', 'YES'):
+		what_grab = input("""
+What do you want to grab?
+B-barrels
+C-cones
+P-poles
+""")
+		if what_grab.upper() in ('B', 'BARRELS'):
+			inventory.append('barrels')
+			print ("Barrels have been added to your inventory!")
+		elif what_grab.upper() in ('C', 'CONES'):
+			inventory.append('cones')
+			print ("Cones have been added to your inventory!")
+		elif what_grab.upper() in ('P', 'POLES'):
+			inventory.append('poles')
+			print ("Poles have been added to your inventory!")
+		else:
+			print("Sorry, that wasn't a valid choice. Please try again!")
+			what_grab = input("""
+What do you want to grab?
+B-barrels
+C-cones
+P-poles
+""")
+	elif grab_yn.upper() in ('N', 'NO'):
+		print("OK, nothing was added to your inventory.")
+	else:
+		print("Sorry, that wasn't a valid choice. Please try again!")
+		grab_yn = input("Do you want to grab something from storage?\n(Y-es or N-o)\n")
+		if grab_yn.upper() in ('Y', 'YES'):
+			what_grab = input("""
+	What do you want to grab?
+B-barrels
+C-cones
+P-poles
+""")
+		if what_grab.upper() in ('B', 'BARRELS'):
+			inventory.append('barrels')
+			print ("Barrels have been added to your inventory!")
+		elif what_grab.upper() in ('C', 'CONES'):
+			inventory.append('cones')
+			print ("Cones have been added to your inventory!")
+		elif what_grab.upper() in ('P', 'POLES'):
+			inventory.append('poles')
+			print ("Poles have been added to your inventory!")
+		else:
+			print("Sorry, that wasn't a valid choice. Please try again!")
+			what_grab = input("""
+What do you want to grab?
+B-barrels
+C-cones
+P-poles
+""")
+				
+	stay_ask = input("""
+Do you want to stay in storage, or leave?
+S-tay
+L-eave
+""")
+
+	while stay_ask.upper() in ('S', 'STAY'):
+		print("OK, you are staying in storage.")
+		grab_yn = input("Do you want to grab something from storage?\n(Y-es or N-o)\n")
+		if grab_yn.upper() in ('Y', 'YES'):
+			what_grab = input("""
+What do you want to grab?
+B-barrels
+C-cones
+P-poles
+""")
+			if what_grab.upper() in ('B', 'BARRELS'):
+				inventory.append('barrels')
+				print ("Barrels have been added to your inventory!")
+			elif what_grab.upper() in ('C', 'CONES'):
+				inventory.append('cones')
+				print ("Cones have been added to your inventory!")
+			elif what_grab.upper() in ('P', 'POLES'):
+				inventory.append('poles')
+				print ("Poles have been added to your inventory!")
+			else:
+				print("Sorry, that wasn't a valid choice. Please try again!")
+				what_grab = input("""
+What do you want to grab?
+B-barrels
+C-cones
+P-poles
+""")
+		elif grab_yn.upper() in ('N', 'NO'):
+			print("OK, nothing was added to your inventory.")
+		else:
+			print("Sorry, that wasn't a valid choice. Please try again!")
+			grab_yn = input("Do you want to grab something from storage?\n(Y-es or N-o)\n")
+		stay_ask = input("""
+Do you want to stay in the barn, or leave?
+S-tay
+L-eave
+""")
+		if stay_ask.upper() in ('L', 'LEAVE'):
+			print("OK, you are leaving storage.")
 def main():
 	Horse = False
 	inventory = []
@@ -421,3 +523,5 @@ R-ound Pens
 			Barn(Barn_description, inventory)
 		elif choice.upper() in ('P', 'PADDOCK'):
 			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('E', 'EXTRA STORAGE'):
+			Extra_Storage(Extra_storage_description, inventory)
