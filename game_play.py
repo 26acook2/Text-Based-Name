@@ -494,7 +494,30 @@ L-eave
 """)
 		if stay_ask.upper() in ('L', 'LEAVE'):
 			print("OK, you are leaving the round pens.")
-
+def Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him):
+	print (f"{Arena_description}")
+	if Horse == False:
+		print(f"Sorry, you don't have a horse to work with!\nGo catch {Horse_name} and come back!")
+	elif Horse == True:
+		act_choice = input(f"""
+What would you like to do?
+B-brush
+R-ride
+T-tack up
+BA-Bathe {Horse_name}
+""")
+		if act_choice.upper() in ('B', 'BRUSH'):
+			if 'brushes' in inventory:
+				if 'hoof picks' in inventory:
+					print(f"Great work! You successfully brushed and picked {Horse_name}'s feet.")
+				else:
+					print(f"You brushed off {Horse_name}, but you didn't have a hoof pick to clean out her hooves.\n Grab a hoof pick and try again.")
+			else:
+				if 'hoof picks' in inventory:
+					print(f"You cleaned out {Horse_name}'s hooves, but didn't have brushes to brush her down.\n Go grab brushes and try again.")
+				else:
+					print(f"Sorry, you didn't have hoof picks or brushes for {Horse_name}.\nGo grab the supplies and try again.")
+		elif act_choice.upper() in ('BA')
 
 def main():
 	Horse = False
@@ -525,7 +548,7 @@ end of the day. Good luck!
 	Arena_description = """
 Welcome to the arena! This is where you will ride,
 tack up, brush, and more! The arena includes a tying 
-post, mats, and a hose/sprinkler. 
+post, and mats.
 	"""
 	Barn_description = """
 Welcome to the barn! This is where all necessary 
@@ -557,8 +580,7 @@ obstacles are stored such as: barrels, cones, and poles.
 	"""
 	Paddock_description = """
 Welcome to the paddock! This is where your horse roams
-when they aren't being used. It includes water troughs,
-hay nets, and a hose. 
+when they aren't being used. It includes a hay net.
 	"""
 
 	print (f"{Intro}")
