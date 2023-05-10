@@ -424,12 +424,76 @@ L-eave
 """)
 		if stay_ask.upper() in ('L', 'LEAVE'):
 			print("OK, you are leaving storage.")
-def Round_Pens(Round_Pen_Description, Horse, Horse_name, horse_pronoun_her_him):
-	print (f"{Round_Pen_Description}")
+def Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him):
+	print (f"{Round_Pen_description}")
 	if Horse == True:
-		print('')
+		lunge_choice = input(f"Do you want to free lunge {Horse_name}?\n(Y-es, or N-o)\n")
+		if lunge_choice.upper() in ('Y', 'YES'):
+			print(f"""
+You are free lunging {Horse_name}
+lunging...
+lunging...
+lunging...
+""")
+			print(f"You are now done lunging {horse_pronoun_her_him}.")
+		elif lunge_choice.upper() in ('N', 'NO'):
+			print(f"OK, you are not lunging {Horse_name}.")
+		else:
+			print("Sorry, that wasn't a valid input. Please try again.")
+			lunge_choice = input(f"Do you want to free lunge {Horse_name}?\n(Y-es, or N-o)\n")
+			if lunge_choice.upper() in ('Y', 'YES'):
+				print(f"""
+You are free lunging {Horse_name}
+lunging...
+lunging...
+lunging...
+""")
+				print(f"You are now done lunging {horse_pronoun_her_him}.")
+			elif lunge_choice.upper() in ('N', 'NO'):
+				print(f"OK, you are not lunging {Horse_name}.")
 	elif Horse == False:
 		print(f"Sorry, but you don't have a horse to lunge. Go grab {Horse_name} and try again!")
+	stay_ask = input("""
+Do you want to stay in the round pens, or leave?
+S-tay
+L-eave
+""")
+	while stay_ask.upper() in ('S', 'STAY'):
+		print("OK, you are staying in the round pens.")
+		if Horse == True:
+			lunge_choice = input(f"Do you want to free lunge {Horse_name}?\n(Y-es, or N-o)\n")
+			if lunge_choice.upper() in ('Y', 'YES'):
+				print(f"""
+You are free lunging {Horse_name}
+lunging...
+lunging...
+lunging...
+""")
+				print(f"You are now done lunging {horse_pronoun_her_him}.")
+			elif lunge_choice.upper() in ('N', 'NO'):
+				print(f"OK, you are not lunging {Horse_name}.")
+			else:
+				print("Sorry, that wasn't a valid input. Please try again.")
+				lunge_choice = input(f"Do you want to free lunge {Horse_name}?\n(Y-es, or N-o)\n")
+				if lunge_choice.upper() in ('Y', 'YES'):
+					print(f"""
+You are free lunging {Horse_name}
+lunging...
+lunging...
+lunging...
+""")
+					print(f"You are now done lunging {horse_pronoun_her_him}.")
+				elif lunge_choice.upper() in ('N', 'NO'):
+					print(f"OK, you are not lunging {Horse_name}.")
+		elif Horse == False:
+			print(f"Sorry, but you don't have a horse to lunge. Go grab {Horse_name} and try again!")
+		stay_ask = input("""
+Do you want to stay in the round pens, or leave?
+S-tay
+L-eave
+""")
+		if stay_ask.upper() in ('L', 'LEAVE'):
+			print("OK, you are leaving the round pens.")
 def main():
 	Horse = False
 	inventory = []
@@ -445,7 +509,7 @@ def main():
 |                                |
 |             Paddock            |
 |________________________________|
-	"""
+"""
 	Intro = """
 Welcome to the equestrian game simulator!
 In this game you will become an equestrian,
@@ -530,3 +594,23 @@ R-ound Pens
 			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
 		elif choice.upper() in ('E', 'EXTRA STORAGE'):
 			Extra_Storage(Extra_storage_description, inventory)
+		elif choice.upper() in ('R', 'ROUND PENS'):
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him)
+
+	while Horse is True:
+		choice = input("""
+Where do you want to go?
+A-rena
+B-arn
+E-xtra Storage
+P-addock
+R-ound Pens
+""")
+		if choice.upper() in ('B', 'BARN'):
+			Barn(Barn_description, inventory)
+		elif choice.upper() in ('P', 'PADDOCK'):
+			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('E', 'EXTRA STORAGE'):
+			Extra_Storage(Extra_storage_description, inventory)
+		elif choice.upper() in ('R', 'ROUND PENS'):
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him)
