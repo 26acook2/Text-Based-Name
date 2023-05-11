@@ -144,22 +144,22 @@ T-treats
 		grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)\n")
 		if grab_yn.upper() in ('Y', 'YES'):
 			what_grab = input("""
-	What do you want to grab?
-	H-halter
-	LR-lead rope
-	LL-lunge line
-	B-bridle
-	S-saddle
-	SP-saddle pad
-	SN-sinch
-	BC-breast collar
-	BR-brushes
-	HP-hoof picks
-	SC-shampoo/conditioner
-	HY-hay
-	G-grain
-	T-treats
-	""")
+What do you want to grab?
+H-halter
+LR-lead rope
+LL-lunge line
+B-bridle
+S-saddle
+SP-saddle pad
+SN-sinch
+BC-breast collar
+BR-brushes
+HP-hoof picks
+SC-shampoo/conditioner
+HY-hay
+G-grain
+T-treats
+""")
 			if what_grab.upper() in ('H', 'HALTER'):
 				inventory.append('halter')
 				print ("A halter has been added to your inventory!")
@@ -205,22 +205,22 @@ T-treats
 			else:
 				print("Sorry, that wasn't a valid choice. Please try again!")
 				what_grab = input("""
-	What do you want to grab?
-	H-halter
-	LR-lead rope
-	LL-lunge line
-	B-bridle
-	S-saddle
-	SP-saddle pad
-	SN-sinch
-	BC-breast collar
-	BR-brushes
-	HP-hoof picks
-	SC-shampoo/conditioner
-	HY-hay
-	G-grain
-	T-treats
-	""")
+What do you want to grab?
+H-halter
+LR-lead rope
+LL-lunge line
+B-bridle
+S-saddle
+SP-saddle pad
+SN-sinch
+BC-breast collar
+BR-brushes
+HP-hoof picks
+SC-shampoo/conditioner
+HY-hay
+G-grain
+T-treats
+""")
 				
 	stay_ask = input("""
 Do you want to stay in the barn, or leave?
@@ -511,6 +511,7 @@ BA-Bathe {Horse_name}
 			if 'brushes' in inventory:
 				if 'hoof picks' in inventory:
 					print(f"Great work! You successfully brushed and picked {Horse_name}'s feet.")
+					inventory.append('Brushed')
 				else:
 					print(f"You brushed off {Horse_name}, but you didn't have a hoof pick to clean out her hooves.\n Grab a hoof pick and try again.")
 			else:
@@ -672,9 +673,11 @@ L-eave
 		if stay_ask.upper() in ('L', 'LEAVE'):
 			print('OK, you are leaving the round pens.')
 	return Tack_temp
+
 def main():
 	Horse = False
 	Tacked_Up = False
+	Brushed = False
 	inventory = []
 	Map = """
      	    _____________
@@ -777,7 +780,11 @@ R-ound Pens
 		elif choice.upper() in ('A', 'ARENA'):
 			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
 
-	while Horse is True:
+	print(f"""
+Now that you've caught your horse, brush {horse_pronoun_her_him} down.
+Hint - Arena
+""")
+	while 'Brushed' not in inventory:
 		choice = input("""
 Where do you want to go?
 A-rena
