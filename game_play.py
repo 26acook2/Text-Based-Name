@@ -3,11 +3,11 @@ def Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her
 	Horse_status = False
 	while Horse is True:
 		release_choice = input(f"Do you want to releaes {Horse_name} in the paddock\n(Y-es or N-o)\n")
-		if release_choice in ('Y' 'YES'):
+		if release_choice.upper() in ('Y' 'YES'):
 			print(f"{Horse_name} is now in the paddock!")
 			Horse_status = False
 			return Horse_status
-		elif release_choice in ('N', 'NO'):
+		elif release_choice.upper() in ('N', 'NO'):
 			print(f"OK, you are still leading {Horse_name}")
 		else:
 			print("Sorry, that wasn't a valid choice please try again.")
@@ -494,8 +494,9 @@ L-eave
 """)
 		if stay_ask.upper() in ('L', 'LEAVE'):
 			print("OK, you are leaving the round pens.")
-def Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him):
+def Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up):
 	print (f"{Arena_description}")
+	Tack_temp = False
 	if Horse == False:
 		print(f"Sorry, you don't have a horse to work with!\nGo catch {Horse_name} and come back!")
 	elif Horse == True:
@@ -517,10 +518,163 @@ BA-Bathe {Horse_name}
 					print(f"You cleaned out {Horse_name}'s hooves, but didn't have brushes to brush her down.\n Go grab brushes and try again.")
 				else:
 					print(f"Sorry, you didn't have hoof picks or brushes for {Horse_name}.\nGo grab the supplies and try again.")
-		elif act_choice.upper() in ('BA')
-
+		elif act_choice.upper() in ('BA', 'BATHE'):
+			if 'shampoo/conditioner' in inventory:
+				print(f"""
+Good job, you had the shampoo and conditioner to clean {Horse_name}!
+Bathing...
+Bathing...
+Bathing...
+{Horse_name} is now freshly clean!
+""")
+			else:
+				print("Sorry, you didn't have shampoo/conditioner to use.\nGrab some, and try again.")
+		elif act_choice.upper() in ('T', 'TACK UP'):
+			print("""
+To tack up your horse to ride follow these steps:
+1) Put on the saddle pad
+2) Put on the saddle
+3) Put on the sinch
+4) Put on the breast collar
+5) Put on the bridle
+""")
+			if 'saddle pad' in inventory:
+				print(f"You have the saddle pad, and put it on {Horse_name}.")
+				Tack_temp = False
+				if 'saddle' in inventory:
+					print(f"You have the saddle, and put it on {Horse_name}.")
+					Tack_temp = False
+					if 'sinch' in inventory:
+						print(f"You have the sinch, and put it on {Horse_name}.")
+						Tack_temp = False
+						if 'breast collar' in inventory:
+							print(f"You have the breast collar, and put in on {Horse_name}.")
+							Tack_temp = False
+							if 'bridle' in inventory:
+								print(f"You have the bridle, and putit on {Horse_name}.")
+								print(f"Good work! You successfully tacked up {Horse_name}, and are ready to ride!")
+								Tack_temp = True
+							else:
+								print(f"Sorry, you didn't have a bridle. Go grab one and try again!")
+						else:
+							print(f"Sorry, you didn't have a breast collar. Go grab one and try again!")
+					else:
+						print(f"Sorry, you didn't have a sinch. Go grab one and try again!")
+				else:
+					print(f"Sorry, you didn't have a saddle. Go grab one and try again!")
+			else:
+				print(f"Sorry, you didn't have a saddle pad. Go grab one and try again!")
+		elif act_choice.upper() in ('R', 'RIDE'):
+			if Tack_temp is True or Tacked_Up is True:
+				print(f"""
+You are ready to ride!
+Riding...
+Riding...
+Riding...
+Great work!
+""")
+			else:
+				print(f"Sorry, {Horse_name} wasn't tacked up, so you could ride.\nTack {horse_pronoun_her_him} and try again!")
+		else:
+			print(f"Sorry, that wasn't a valid choice. Please try again.")
+	stay_ask = input("""
+Do you want to stay in the arena, or leave?
+S-tay
+L-eave
+""")
+	while stay_ask.upper() in ('S', 'STAY'):
+		print("OK, you are staying in the arena.")
+		if Horse == False:
+			print(f"Sorry, you don't have a horse to work with!\nGo catch {Horse_name} and come back!")
+		elif Horse == True:
+			act_choice = input(f"""
+What would you like to do?
+B-brush
+R-ride
+T-tack up
+BA-Bathe {Horse_name}
+""")
+			if act_choice.upper() in ('B', 'BRUSH'):
+				if 'brushes' in inventory:
+					if 'hoof picks' in inventory:
+						print(f"Great work! You successfully brushed and picked {Horse_name}'s feet.")
+					else:
+						print(f"You brushed off {Horse_name}, but you didn't have a hoof pick to clean out her hooves.\n Grab a hoof pick and try again.")
+				else:
+					if 'hoof picks' in inventory:
+						print(f"You cleaned out {Horse_name}'s hooves, but didn't have brushes to brush her down.\n Go grab brushes and try again.")
+					else:
+						print(f"Sorry, you didn't have hoof picks or brushes for {Horse_name}.\nGo grab the supplies and try again.")
+			elif act_choice.upper() in ('BA', 'BATHE'):
+				if 'shampoo/conditioner' in inventory:
+					print(f"""
+Good job, you had the shampoo and conditioner to clean {Horse_name}!
+Bathing...
+Bathing...
+Bathing...
+{Horse_name} is now freshly clean!
+""")
+				else:
+					print("Sorry, you didn't have shampoo/conditioner to use.\nGrab some, and try again.")
+			elif act_choice.upper() in ('T', 'TACK UP'):
+				print("""
+To tack up your horse to ride follow these steps:
+1) Put on the saddle pad
+2) Put on the saddle
+3) Put on the sinch
+4) Put on the breast collar
+5) Put on the bridle
+""")
+				if 'saddle pad' in inventory:
+					print(f"You have the saddle pad, and put it on {Horse_name}.")
+					Tack_temp = False
+					if 'saddle' in inventory:
+						print(f"You have the saddle, and put it on {Horse_name}.")
+						Tack_temp = False
+						if 'sinch' in inventory:
+							print(f"You have the sinch, and put it on {Horse_name}.")
+							Tack_temp = False
+							if 'breast collar' in inventory:
+								print(f"You have the breast collar, and put in on {Horse_name}.")
+								Tack_temp = False
+								if 'bridle' in inventory:
+									print(f"You have the bridle, and putit on {Horse_name}.")
+									print(f"Good work! You successfully tacked up {Horse_name}, and are ready to ride!")
+									Tack_temp = True
+								else:
+									print(f"Sorry, you didn't have a bridle. Go grab one and try again!")
+							else:
+								print(f"Sorry, you didn't have a breast collar. Go grab one and try again!")
+						else:
+							print(f"Sorry, you didn't have a sinch. Go grab one and try again!")
+					else:
+						print(f"Sorry, you didn't have a saddle. Go grab one and try again!")
+				else:
+					print(f"Sorry, you didn't have a saddle pad. Go grab one and try again!")
+			elif act_choice.upper() in ('R', 'RIDE'):
+				if Tack_temp is True or Tacked_Up is True:
+					print(f"""
+You are ready to ride!
+Riding...
+Riding...
+Riding...
+Great work!
+""")
+				else:
+					print(f"Sorry, {Horse_name} wasn't tacked up, so you could ride.\nTack {horse_pronoun_her_him} and try again!")
+			else:
+				print(f"Sorry, that wasn't a valid choice. Please try again.")
+		stay_ask = input("""
+Do you want to stay in the arena, or leave?
+S-tay
+L-eave
+""")
+		if stay_ask.upper() in ('L', 'LEAVE'):
+			print('OK, you are leaving the round pens.')
+	return Tack_temp
 def main():
 	Horse = False
+	Tacked_Up = False
 	inventory = []
 	Map = """
      	    _____________
@@ -620,6 +774,8 @@ R-ound Pens
 			Extra_Storage(Extra_storage_description, inventory)
 		elif choice.upper() in ('R', 'ROUND PENS'):
 			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('A', 'ARENA'):
+			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
 
 	while Horse is True:
 		choice = input("""
@@ -638,3 +794,5 @@ R-ound Pens
 			Extra_Storage(Extra_storage_description, inventory)
 		elif choice.upper() in ('R', 'ROUND PENS'):
 			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('A', 'ARENA'):
+			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
