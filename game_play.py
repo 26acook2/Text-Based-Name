@@ -668,7 +668,6 @@ L-eave
 		if stay_ask.upper() in ('L', 'LEAVE'):
 			print('OK, you are leaving the arena.')
 	return Tack_temp
-
 def main():
 	Horse = False
 	Tacked_Up = False

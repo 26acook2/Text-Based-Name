@@ -1,4 +1,8 @@
+import pickle
 class Play:
+    def save():
+        with open ('saved_file.bin', 'wb') as f:
+            pickle.dump(play, f)
     def Paddock(self, Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him):
         print (f"{Paddock_description}")
         Horse_status = False
@@ -603,6 +607,7 @@ Bathing...
 Bathing...
 {Horse_name} is now freshly clean!
 """)
+                        inventory.append('Bathed')
                     else:
                         print("Sorry, you didn't have shampoo/conditioner to use.\nGrab some, and try again.")
                 elif act_choice.upper() in ('U', 'UNTACK'):
@@ -763,6 +768,8 @@ B-arn
 E-xtra Storage
 P-addock
 R-ound Pens
+
+S-save game
 """)
             if choice.upper() in ('B', 'BARN'):
                 self.Barn(Barn_description, inventory)
@@ -774,7 +781,8 @@ R-ound Pens
                 self.Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
-
+            elif choice.upper() in ('S', 'SAVE GAME'):
+                save()
         print(f"""
 Now that you've caught your horse, brush {horse_pronoun_her_him} down.
 """)
@@ -786,6 +794,8 @@ B-arn
 E-xtra Storage
 P-addock
 R-ound Pens
+
+S-save game
 """)
             if choice.upper() in ('B', 'BARN'):
                 self.Barn(Barn_description, inventory)
@@ -797,6 +807,8 @@ R-ound Pens
                self.Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+            elif choice.upper() in ('S', 'SAVE GAME'):
+                save()
         print(f"""
 Now that you have brushed off {Horse_name}, warm {horse_pronoun_her_him} up!
 Hint - Free lunge {horse_pronoun_her_him}
@@ -809,6 +821,8 @@ B-arn
 E-xtra Storage
 P-addock
 R-ound Pens
+
+S-save game
 """)
             if choice.upper() in ('B', 'BARN'):
                 self.Barn(Barn_description, inventory)
@@ -820,6 +834,8 @@ R-ound Pens
                 self.Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+            elif choice.upper() in ('S', 'SAVE GAME'):
+                save()
         print(f"""
 Now that you have warmed up {Horse_name}, 
 get {horse_pronoun_her_him} tacked up and ready to ride!
@@ -832,6 +848,8 @@ B-arn
 E-xtra Storage
 P-addock
 R-ound Pens
+
+S-save game
 """)
             if choice.upper() in ('B', 'BARN'):
                 self.Barn(Barn_description, inventory)
@@ -843,6 +861,8 @@ R-ound Pens
                 self.Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+            elif choice.upper() in ('S', 'SAVE GAME'):
+                save()
         print(f"""
 Now that you tacked up {Horse_name} and she's ready to ride,
 grab an obstacle to practice an event with!
@@ -855,6 +875,8 @@ B-arn
 E-xtra Storage
 P-addock
 R-ound Pens
+
+S-save game
 """)
             if choice.upper() in ('B', 'BARN'):
                 self.Barn(Barn_description, inventory)
@@ -866,6 +888,8 @@ R-ound Pens
                 self.Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+            elif choice.upper() in ('S', 'SAVE GAME'):
+                save()
         print(f"""
 Now that you've chosen your event to work on, go ride!
 """)
@@ -877,6 +901,8 @@ B-arn
 E-xtra Storage
 P-addock
 R-ound Pens
+
+S-save game
 """)
             if choice.upper() in ('B', 'BARN'):
                 self.Barn(Barn_description, inventory)
@@ -888,6 +914,8 @@ R-ound Pens
                 self.Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+            elif choice.upper() in ('S', 'SAVE GAME'):
+                save()
         print(f"""
 Now that you are done riding {Horse_name}, untack {horse_pronoun_her_him}.
 """)
@@ -899,6 +927,8 @@ B-arn
 E-xtra Storage
 P-addock
 R-ound Pens
+
+S-save game
 """)
             if choice.upper() in ('B', 'BARN'):
                 self.Barn(Barn_description, inventory)
@@ -910,6 +940,8 @@ R-ound Pens
                 self.Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+            elif choice.upper() in ('S', 'SAVE GAME'):
+                save()
         print(f"""
 Now that you've untacked {Horse_name}, get {horse_pronoun_her_him} a treat.
 """)
@@ -921,6 +953,8 @@ B-arn
 E-xtra Storage
 P-addock
 R-ound Pens
+
+S-save game
 """)
             if choice.upper() in ('B', 'BARN'):
                 self.Barn(Barn_description, inventory)
@@ -932,6 +966,8 @@ R-ound Pens
                 self.Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+            elif choice.upper() in ('S', 'SAVE GAME'):
+                save()
         print(f"""
 Now that you've rewarded {Horse_name} and given {horse_pronoun_her_him} a treat,
 give {horse_pronoun_her_him} a bath!
@@ -944,6 +980,8 @@ B-arn
 E-xtra Storage
 P-addock
 R-ound Pens
+
+S-save game
 """)
             if choice.upper() in ('B', 'BARN'):
                 self.Barn(Barn_description, inventory)
@@ -955,6 +993,8 @@ R-ound Pens
                 self.Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+            elif choice.upper() in ('S', 'SAVE GAME'):
+                save()
         print(f"""
 Now that {Horse_name} is clean, release {horse_pronoun_her_him} into the paddock for the night.
 """)
@@ -966,6 +1006,8 @@ B-arn
 E-xtra Storage
 P-addock
 R-ound Pens
+
+S-save game
 """)
             if choice.upper() in ('B', 'BARN'):
                 self.Barn(Barn_description, inventory)
@@ -977,3 +1019,12 @@ R-ound Pens
                 self.Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+            elif choice.upper() in ('S', 'SAVE GAME'):
+                save()
+def load():
+        try:
+            with open('saved_file.bin', 'rb') as f:
+                play = pickle.load(f)
+        except FileNotFoundError:
+            print ("Game file not found")
+play = Play()
