@@ -1,60 +1,60 @@
 def Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him):
-	print (f"{Paddock_description}")
-	Horse_status = False
-	while Horse is True:
-		release_choice = input(f"Do you want to releaes {Horse_name} in the paddock\n(Y-es or N-o)\n")
-		if release_choice.upper() in ('Y' 'YES'):
-			print(f"{Horse_name} is now in the paddock!")
-			Horse_status = False
-			return Horse_status
-		elif release_choice.upper() in ('N', 'NO'):
-			print(f"OK, you are still leading {Horse_name}")
-		else:
-			print("Sorry, that wasn't a valid choice please try again.")
-	if Horse == False:
-		catch_choice = input(f"Do you want to catch {Horse_name}?\n(Y-es or N-o)\n")
-		if catch_choice.upper() in ('Y', 'YES'):
-			if 'halter' in inventory:
-				if 'lead rope' in inventory:
-					print(f"Good job, you had the halter and lead rope to catch {Horse_name}! You are now leading {horse_pronoun_her_him}.")
-					Horse_status = True
-					return Horse_status
-				else:
-					print(f"You have a halter to put on {Horse_name}, but nothing to lead {horse_pronoun_her_him} with. Go grab a leadrope!")
-			elif 'halter' not in inventory:
-				print(f"Sorry, but you don't have a halter to use! Go grab the equipment to lead {Horse_name} with!")
-		while catch_choice.upper() in ('N', 'NO'):
-			stay_choice = input("OK, would you like to stay or leave the paddock?\n(S-tay or L-eave)\n")
-			if stay_choice.upper() in ('S', 'STAY'):
-				"Ok, you are staying in the paddock."
-				while Horse is True:
-					release_choice = input(f"Do you want to release	 {Horse_name} in the paddock\n(Y-es or N-o)\n")
-					if release_choice in ('Y' 'YES'):
-						print(f"{Horse_name} is now in the paddock!")
-						Horse_status = False
-						return Horse_status
-					elif release_choice in ('N', 'NO'):
-						print(f"OK, you are still leading {Horse_name}")
-					else:
-						print("Sorry, that wasn't a valid choice please try again.")
-				if Horse == False:
-					catch_choice = input(f"Do you want to catch {Horse_name}?\n(Y-es or N-o)\n")
-					if catch_choice.upper() in ('Y', 'YES'):
-						if 'halter' in inventory:
-							if 'lead rope' in inventory:
-								print(f"Good job, you had the halter and lead rope to catch {Horse_name}! You are now leading {horse_pronoun_her_him}.")
-								Horse_status = True
-								return Horse_status
-							else:
-								print(f"You have a halter to put on {Horse_name}, but nothing to lead {horse_pronoun_her_him} with. Go grab a leadrope!")
-						elif 'halter' not in inventory:
-							print(f"Sorry, but you don't have a halter to use! Go grab the equipment to lead {Horse_name} with!")
-			elif stay_choice.upper() in ('L', 'LEAVE'):
-				print("OK, you are leaving the paddock.")
-				catch_choice = 'NA'
+		print (f"{Paddock_description}")
+		Horse_status = False
+		if Horse is True:
+			release_choice = input(f"Do you want to releaes {Horse_name} in the paddock\n(Y-es or N-o)\n")
+			if release_choice.upper() in ('Y' 'YES'):
+				print(f"{Horse_name} is now in the paddock!")
+				Horse_status = False
+				return Horse_status
+			elif release_choice.upper() in ('N', 'NO'):
+				print(f"OK, you are still leading {Horse_name}")
 			else:
 				print("Sorry, that wasn't a valid choice please try again.")
-	return Horse_status
+		if Horse == False:
+			catch_choice = input(f"Do you want to catch {Horse_name}?\n(Y-es or N-o)\n")
+			if catch_choice.upper() in ('Y', 'YES'):
+				if 'halter' in inventory:
+					if 'lead rope' in inventory:
+						print(f"Good job, you had the halter and lead rope to catch {Horse_name}! You are now leading {horse_pronoun_her_him}.")
+						Horse_status = True
+						return Horse_status
+					else:
+						print(f"You have a halter to put on {Horse_name}, but nothing to lead {horse_pronoun_her_him} with. Go grab a leadrope!")
+				elif 'halter' not in inventory:
+					print(f"Sorry, but you don't have a halter to use! Go grab the equipment to lead {Horse_name} with!")
+			while catch_choice.upper() in ('N', 'NO'):
+				stay_choice = input("OK, would you like to stay or leave the paddock?\n(S-tay or L-eave)\n")
+				if stay_choice.upper() in ('S', 'STAY'):
+					"Ok, you are staying in the paddock."
+					while Horse is True:
+						release_choice = input(f"Do you want to release	 {Horse_name} in the paddock\n(Y-es or N-o)\n")
+						if release_choice in ('Y' 'YES'):
+							print(f"{Horse_name} is now in the paddock!")
+							Horse_status = False
+							return Horse_status
+						elif release_choice in ('N', 'NO'):
+							print(f"OK, you are still leading {Horse_name}")
+						else:
+							print("Sorry, that wasn't a valid choice please try again.")
+					if Horse == False:
+						catch_choice = input(f"Do you want to catch {Horse_name}?\n(Y-es or N-o)\n")
+						if catch_choice.upper() in ('Y', 'YES'):
+							if 'halter' in inventory:
+								if 'lead rope' in inventory:
+									print(f"Good job, you had the halter and lead rope to catch {Horse_name}! You are now leading {horse_pronoun_her_him}.")
+									Horse_status = True
+									return Horse_status
+								else:
+									print(f"You have a halter to put on {Horse_name}, but nothing to lead {horse_pronoun_her_him} with. Go grab a leadrope!")
+							elif 'halter' not in inventory:
+								print(f"Sorry, but you don't have a halter to use! Go grab the equipment to lead {Horse_name} with!")
+				elif stay_choice.upper() in ('L', 'LEAVE'):
+					print("OK, you are leaving the paddock.")
+					catch_choice = 'NA'
+				else:
+					print("Sorry, that wasn't a valid choice please try again.")
+		return Horse_status
 def Barn(Barn_description, inventory):
 	print (f"{Barn_description}")
 	grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)\n")
@@ -63,7 +63,6 @@ def Barn(Barn_description, inventory):
 What do you want to grab?
 H-halter
 LR-lead rope
-LL-lunge line
 B-bridle
 S-saddle
 SP-saddle pad
@@ -72,8 +71,6 @@ BC-breast collar
 BR-brushes
 HP-hoof picks
 SC-shampoo/conditioner
-HY-hay
-G-grain
 T-treats
 """)
 		if what_grab.upper() in ('H', 'HALTER'):
@@ -82,9 +79,6 @@ T-treats
 		elif what_grab.upper() in ('LR', 'LEAD ROPE'):
 			inventory.append('lead rope')
 			print ("A lead rope has been added to your inventory!")
-		elif what_grab.upper() in ('LL', 'LUNGE LINE'):
-			inventory.append('lunge line')
-			print ("A lunge line has been added to your inventory!")
 		elif what_grab.upper() in ('B', 'BRIDLE'):
 			inventory.append('bridle')
 			print ("A bridle has been added to your inventory!")
@@ -124,7 +118,6 @@ T-treats
 What do you want to grab?
 H-halter
 LR-lead rope
-LL-lunge line
 B-bridle
 S-saddle
 SP-saddle pad
@@ -133,8 +126,6 @@ BC-breast collar
 BR-brushes
 HP-hoof picks
 SC-shampoo/conditioner
-HY-hay
-G-grain
 T-treats
 """)
 	elif grab_yn.upper() in ('N', 'NO'):
@@ -144,31 +135,25 @@ T-treats
 		grab_yn = input("Do you want to grab something from the barn?\n(Y-es or N-o)\n")
 		if grab_yn.upper() in ('Y', 'YES'):
 			what_grab = input("""
-	What do you want to grab?
-	H-halter
-	LR-lead rope
-	LL-lunge line
-	B-bridle
-	S-saddle
-	SP-saddle pad
-	SN-sinch
-	BC-breast collar
-	BR-brushes
-	HP-hoof picks
-	SC-shampoo/conditioner
-	HY-hay
-	G-grain
-	T-treats
-	""")
+What do you want to grab?
+H-halter
+LR-lead rope
+B-bridle
+S-saddle
+SP-saddle pad
+SN-sinch
+BC-breast collar
+BR-brushes
+HP-hoof picks
+SC-shampoo/conditioner
+T-treats
+""")
 			if what_grab.upper() in ('H', 'HALTER'):
 				inventory.append('halter')
 				print ("A halter has been added to your inventory!")
 			elif what_grab.upper() in ('LR', 'LEAD ROPE'):
 				inventory.append('lead rope')
 				print ("A lead rope has been added to your inventory!")
-			elif what_grab.upper() in ('LL', 'LUNGE LINE'):
-				inventory.append('lunge line')
-				print ("A lunge line has been added to your inventory!")
 			elif what_grab.upper() in ('B', 'BRIDLE'):
 				inventory.append('bridle')
 				print ("A bridle has been added to your inventory!")
@@ -205,22 +190,19 @@ T-treats
 			else:
 				print("Sorry, that wasn't a valid choice. Please try again!")
 				what_grab = input("""
-	What do you want to grab?
-	H-halter
-	LR-lead rope
-	LL-lunge line
-	B-bridle
-	S-saddle
-	SP-saddle pad
-	SN-sinch
-	BC-breast collar
-	BR-brushes
-	HP-hoof picks
-	SC-shampoo/conditioner
-	HY-hay
-	G-grain
-	T-treats
-	""")
+What do you want to grab?
+H-halter
+LR-lead rope
+B-bridle
+S-saddle
+SP-saddle pad
+SN-sinch
+BC-breast collar
+BR-brushes
+HP-hoof picks
+SC-shampoo/conditioner
+T-treats
+""")
 				
 	stay_ask = input("""
 Do you want to stay in the barn, or leave?
@@ -236,7 +218,6 @@ L-eave
 What do you want to grab?
 H-halter
 LR-lead rope
-LL-lunge line
 B-bridle
 S-saddle
 SP-saddle pad
@@ -245,8 +226,6 @@ BC-breast collar
 BR-brushes
 HP-hoof picks
 SC-shampoo/conditioner
-HY-hay
-G-grain
 T-treats
 """)
 			if what_grab.upper() in ('H', 'HALTER'):
@@ -255,9 +234,6 @@ T-treats
 			elif what_grab.upper() in ('LR', 'LEAD ROPE'):
 				inventory.append('lead rope')
 				print ("A lead rope has been added to your inventory!")
-			elif what_grab.upper() in ('LL', 'LUNGE LINE'):
-				inventory.append('lunge line')
-				print ("A lunge line has been added to your inventory!")
 			elif what_grab.upper() in ('B', 'BRIDLE'):
 				inventory.append('bridle')
 				print ("A bridle has been added to your inventory!")
@@ -297,7 +273,6 @@ T-treats
 What do you want to grab?
 H-halter
 LR-lead rope
-LL-lunge line
 B-bridle
 S-saddle
 SP-saddle pad
@@ -306,8 +281,6 @@ BC-breast collar
 BR-brushes
 HP-hoof picks
 SC-shampoo/conditioner
-H-hay
-G-grain
 T-treats
 """)
 		elif grab_yn.upper() in ('N', 'NO'):
@@ -333,13 +306,13 @@ C-cones
 P-poles
 """)
 		if what_grab.upper() in ('B', 'BARRELS'):
-			inventory.append('barrels')
+			inventory.append('obstacle')
 			print ("Barrels have been added to your inventory!")
 		elif what_grab.upper() in ('C', 'CONES'):
-			inventory.append('cones')
+			inventory.append('obstacle')
 			print ("Cones have been added to your inventory!")
 		elif what_grab.upper() in ('P', 'POLES'):
-			inventory.append('poles')
+			inventory.append('obstacle')
 			print ("Poles have been added to your inventory!")
 		else:
 			print("Sorry, that wasn't a valid choice. Please try again!")
@@ -362,13 +335,13 @@ C-cones
 P-poles
 """)
 		if what_grab.upper() in ('B', 'BARRELS'):
-			inventory.append('barrels')
+			inventory.append('obstacle')
 			print ("Barrels have been added to your inventory!")
 		elif what_grab.upper() in ('C', 'CONES'):
-			inventory.append('cones')
+			inventory.append('obstacle')
 			print ("Cones have been added to your inventory!")
 		elif what_grab.upper() in ('P', 'POLES'):
-			inventory.append('poles')
+			inventory.append('obstacle')
 			print ("Poles have been added to your inventory!")
 		else:
 			print("Sorry, that wasn't a valid choice. Please try again!")
@@ -396,13 +369,13 @@ C-cones
 P-poles
 """)
 			if what_grab.upper() in ('B', 'BARRELS'):
-				inventory.append('barrels')
+				inventory.append('obstacle')
 				print ("Barrels have been added to your inventory!")
 			elif what_grab.upper() in ('C', 'CONES'):
-				inventory.append('cones')
+				inventory.append('obstacle')
 				print ("Cones have been added to your inventory!")
 			elif what_grab.upper() in ('P', 'POLES'):
-				inventory.append('poles')
+				inventory.append('obstacle')
 				print ("Poles have been added to your inventory!")
 			else:
 				print("Sorry, that wasn't a valid choice. Please try again!")
@@ -424,7 +397,7 @@ L-eave
 """)
 		if stay_ask.upper() in ('L', 'LEAVE'):
 			print("OK, you are leaving storage.")
-def Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him):
+def Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory):
 	print (f"{Round_Pen_description}")
 	if Horse == True:
 		lunge_choice = input(f"Do you want to free lunge {Horse_name}?\n(Y-es, or N-o)\n")
@@ -436,6 +409,7 @@ lunging...
 lunging...
 """)
 			print(f"You are now done lunging {horse_pronoun_her_him}.")
+			inventory.append('Lunged')
 		elif lunge_choice.upper() in ('N', 'NO'):
 			print(f"OK, you are not lunging {Horse_name}.")
 		else:
@@ -449,6 +423,7 @@ lunging...
 lunging...
 """)
 				print(f"You are now done lunging {horse_pronoun_her_him}.")
+				inventory.append('Lunged')
 			elif lunge_choice.upper() in ('N', 'NO'):
 				print(f"OK, you are not lunging {Horse_name}.")
 	elif Horse == False:
@@ -505,12 +480,14 @@ What would you like to do?
 B-brush
 R-ride
 T-tack up
-BA-Bathe {Horse_name}
+BA-bathe {Horse_name}
+U-untack
 """)
 		if act_choice.upper() in ('B', 'BRUSH'):
 			if 'brushes' in inventory:
 				if 'hoof picks' in inventory:
 					print(f"Great work! You successfully brushed and picked {Horse_name}'s feet.")
+					inventory.append('Brushed')
 				else:
 					print(f"You brushed off {Horse_name}, but you didn't have a hoof pick to clean out her hooves.\n Grab a hoof pick and try again.")
 			else:
@@ -527,8 +504,16 @@ Bathing...
 Bathing...
 {Horse_name} is now freshly clean!
 """)
+				inventory.append('Bathed')
 			else:
 				print("Sorry, you didn't have shampoo/conditioner to use.\nGrab some, and try again.")
+		elif act_choice.upper() in ('U', 'UNTACK'):
+			if 'Tacked' in inventory:
+				print(f"Good work, you untacked {Horse_name}.")
+				inventory.remove('Tacked')
+				inventory.append('Untacked')
+			else:
+				print(f"Sorry, {Horse_name} wasn't tacked up, so you can't untack {horse_pronoun_her_him}.")
 		elif act_choice.upper() in ('T', 'TACK UP'):
 			print("""
 To tack up your horse to ride follow these steps:
@@ -554,6 +539,7 @@ To tack up your horse to ride follow these steps:
 								print(f"You have the bridle, and putit on {Horse_name}.")
 								print(f"Good work! You successfully tacked up {Horse_name}, and are ready to ride!")
 								Tack_temp = True
+								inventory.append('Tacked')
 							else:
 								print(f"Sorry, you didn't have a bridle. Go grab one and try again!")
 						else:
@@ -573,6 +559,7 @@ Riding...
 Riding...
 Great work!
 """)
+				inventory.append('Rode')
 			else:
 				print(f"Sorry, {Horse_name} wasn't tacked up, so you could ride.\nTack {horse_pronoun_her_him} and try again!")
 		else:
@@ -592,7 +579,8 @@ What would you like to do?
 B-brush
 R-ride
 T-tack up
-BA-Bathe {Horse_name}
+BA-bathe {Horse_name}
+U-untack
 """)
 			if act_choice.upper() in ('B', 'BRUSH'):
 				if 'brushes' in inventory:
@@ -616,6 +604,13 @@ Bathing...
 """)
 				else:
 					print("Sorry, you didn't have shampoo/conditioner to use.\nGrab some, and try again.")
+			elif act_choice.upper() in ('U', 'UNTACK'):
+				if 'Tacked' in inventory:
+					print(f"Good work, you untacked {Horse_name}.")
+					inventory.remove('Tacked')
+					inventory.append('Untacked')
+				else:
+					print(f"Sorry, {Horse_name} wasn't tacked up, so you can't untack {horse_pronoun_her_him}.")
 			elif act_choice.upper() in ('T', 'TACK UP'):
 				print("""
 To tack up your horse to ride follow these steps:
@@ -641,6 +636,7 @@ To tack up your horse to ride follow these steps:
 									print(f"You have the bridle, and putit on {Horse_name}.")
 									print(f"Good work! You successfully tacked up {Horse_name}, and are ready to ride!")
 									Tack_temp = True
+									inventory.append('Tacked')
 								else:
 									print(f"Sorry, you didn't have a bridle. Go grab one and try again!")
 							else:
@@ -670,11 +666,13 @@ S-tay
 L-eave
 """)
 		if stay_ask.upper() in ('L', 'LEAVE'):
-			print('OK, you are leaving the round pens.')
+			print('OK, you are leaving the arena.')
 	return Tack_temp
+
 def main():
 	Horse = False
 	Tacked_Up = False
+	Brushed = False
 	inventory = []
 	Map = """
      	    _____________
@@ -773,10 +771,197 @@ R-ound Pens
 		elif choice.upper() in ('E', 'EXTRA STORAGE'):
 			Extra_Storage(Extra_storage_description, inventory)
 		elif choice.upper() in ('R', 'ROUND PENS'):
-			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him)
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
 		elif choice.upper() in ('A', 'ARENA'):
 			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
 
+	print(f"""
+Now that you've caught your horse, brush {horse_pronoun_her_him} down.
+Hint - Arena
+""")
+	while 'Brushed' not in inventory:
+		choice = input("""
+Where do you want to go?
+A-rena
+B-arn
+E-xtra Storage
+P-addock
+R-ound Pens
+""")
+		if choice.upper() in ('B', 'BARN'):
+			Barn(Barn_description, inventory)
+		elif choice.upper() in ('P', 'PADDOCK'):
+			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('E', 'EXTRA STORAGE'):
+			Extra_Storage(Extra_storage_description, inventory)
+		elif choice.upper() in ('R', 'ROUND PENS'):
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
+		elif choice.upper() in ('A', 'ARENA'):
+			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+	print(f"""
+Now that you have brushed off {Horse_name}, warm {horse_pronoun_her_him} up!
+Hint - Free lunge {horse_pronoun_her_him} (Round Pens)
+""")
+	while 'Lunged' not in inventory:
+		choice = input("""
+Where do you want to go?
+A-rena
+B-arn
+E-xtra Storage
+P-addock
+R-ound Pens
+""")
+		if choice.upper() in ('B', 'BARN'):
+			Barn(Barn_description, inventory)
+		elif choice.upper() in ('P', 'PADDOCK'):
+			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('E', 'EXTRA STORAGE'):
+			Extra_Storage(Extra_storage_description, inventory)
+		elif choice.upper() in ('R', 'ROUND PENS'):
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
+		elif choice.upper() in ('A', 'ARENA'):
+			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+	print(f"""
+Now that you have warmed up {Horse_name}, 
+get {horse_pronoun_her_him} tacked up and ready to ride!
+Hint - Arena
+""")
+	while 'Tacked' not in inventory:
+		choice = input("""
+Where do you want to go?
+A-rena
+B-arn
+E-xtra Storage
+P-addock
+R-ound Pens
+""")
+		if choice.upper() in ('B', 'BARN'):
+			Barn(Barn_description, inventory)
+		elif choice.upper() in ('P', 'PADDOCK'):
+			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('E', 'EXTRA STORAGE'):
+			Extra_Storage(Extra_storage_description, inventory)
+		elif choice.upper() in ('R', 'ROUND PENS'):
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
+		elif choice.upper() in ('A', 'ARENA'):
+			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+	print(f"""
+Now that you tacked up {Horse_name} and she's ready to ride,
+grab an obstacle to practice an event with!
+Hint - Extra Storage
+""")
+	while 'obstacle' not in inventory:
+		choice = input("""
+Where do you want to go?
+A-rena
+B-arn
+E-xtra Storage
+P-addock
+R-ound Pens
+""")
+		if choice.upper() in ('B', 'BARN'):
+			Barn(Barn_description, inventory)
+		elif choice.upper() in ('P', 'PADDOCK'):
+			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('E', 'EXTRA STORAGE'):
+			Extra_Storage(Extra_storage_description, inventory)
+		elif choice.upper() in ('R', 'ROUND PENS'):
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
+		elif choice.upper() in ('A', 'ARENA'):
+			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+	print(f"""
+Now that you've chosen your event to work on, go ride!
+""")
+	while 'Rode' not in inventory:
+		choice = input("""
+Where do you want to go?
+A-rena
+B-arn
+E-xtra Storage
+P-addock
+R-ound Pens
+""")
+		if choice.upper() in ('B', 'BARN'):
+			Barn(Barn_description, inventory)
+		elif choice.upper() in ('P', 'PADDOCK'):
+			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('E', 'EXTRA STORAGE'):
+			Extra_Storage(Extra_storage_description, inventory)
+		elif choice.upper() in ('R', 'ROUND PENS'):
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
+		elif choice.upper() in ('A', 'ARENA'):
+			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+	print(f"""
+Now that you are done riding {Horse_name}, untack {horse_pronoun_her_him}.
+""")
+	while 'Untacked' not in inventory:
+		choice = input("""
+Where do you want to go?
+A-rena
+B-arn
+E-xtra Storage
+P-addock
+R-ound Pens
+""")
+		if choice.upper() in ('B', 'BARN'):
+			Barn(Barn_description, inventory)
+		elif choice.upper() in ('P', 'PADDOCK'):
+			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('E', 'EXTRA STORAGE'):
+			Extra_Storage(Extra_storage_description, inventory)
+		elif choice.upper() in ('R', 'ROUND PENS'):
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
+		elif choice.upper() in ('A', 'ARENA'):
+			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+	print(f"""
+Now that you've untacked {Horse_name}, get {horse_pronoun_her_him} a treat.
+""")
+	while 'treats' not in inventory:
+		choice = input("""
+Where do you want to go?
+A-rena
+B-arn
+E-xtra Storage
+P-addock
+R-ound Pens
+""")
+		if choice.upper() in ('B', 'BARN'):
+			Barn(Barn_description, inventory)
+		elif choice.upper() in ('P', 'PADDOCK'):
+			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('E', 'EXTRA STORAGE'):
+			Extra_Storage(Extra_storage_description, inventory)
+		elif choice.upper() in ('R', 'ROUND PENS'):
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
+		elif choice.upper() in ('A', 'ARENA'):
+			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+	print(f"""
+Now that you've rewarded {Horse_name} and given {horse_pronoun_her_him} a treat,
+give {horse_pronoun_her_him} a bath!
+Hint - Arena
+""")
+	while 'Bathed' not in inventory:
+		choice = input("""
+Where do you want to go?
+A-rena
+B-arn
+E-xtra Storage
+P-addock
+R-ound Pens
+""")
+		if choice.upper() in ('B', 'BARN'):
+			Barn(Barn_description, inventory)
+		elif choice.upper() in ('P', 'PADDOCK'):
+			Horse = Paddock(Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him)
+		elif choice.upper() in ('E', 'EXTRA STORAGE'):
+			Extra_Storage(Extra_storage_description, inventory)
+		elif choice.upper() in ('R', 'ROUND PENS'):
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
+		elif choice.upper() in ('A', 'ARENA'):
+			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
+	print(f"""
+Now that {Horse_name} is clean, release {horse_pronoun_her_him} into the paddock for the night.
+""")
 	while Horse is True:
 		choice = input("""
 Where do you want to go?
@@ -793,6 +978,6 @@ R-ound Pens
 		elif choice.upper() in ('E', 'EXTRA STORAGE'):
 			Extra_Storage(Extra_storage_description, inventory)
 		elif choice.upper() in ('R', 'ROUND PENS'):
-			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him)
+			Round_Pens(Round_Pen_description, Horse, Horse_name, horse_pronoun_her_him, inventory)
 		elif choice.upper() in ('A', 'ARENA'):
 			Tacked_Up = Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
