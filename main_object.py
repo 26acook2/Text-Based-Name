@@ -17,6 +17,7 @@ while choice not in quit:
 	elif choice in quit:
 		print("Goodbye.")
 	elif choice in load_game:
-		load()
+		save_data = load()
+		my_game.main(save_data["Horse"], save_data["Tacked_Up"], save_data["Brushed"], save_data["inventory"], save_data["Horse_name"], save_data["Horse_gender"])
 	else:
 		print("Invalid selection.")

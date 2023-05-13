@@ -1,8 +1,18 @@
 import pickle
 class Play:
-    def save():
-        with open ('saved_file.bin', 'wb') as f:
-            pickle.dump(play, f)
+    def save(self, Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender):
+        with open ('Horse.pickle', 'wb') as f:
+            pickle.dump(Horse, f)
+        with open ('Tacked_Up.pickle', 'wb') as f:
+            pickle.dump(Tacked_Up, f)
+        with open ('Brushed.pickle', 'wb') as f:
+            pickle.dump(Brushed, f)
+        with open ('inventory.pickle', 'wb') as f:
+            pickle.dump(inventory, f)
+        with open ('Horse_name', 'wb') as f:
+            pickle.dump(Horse_name, f)
+        with open ('Horse_gender', 'wb') as f:
+            pickle.dump(Horse_gender, f)
     def Paddock(self, Paddock_description, inventory, Horse, Horse_name, horse_pronoun_her_him):
         print (f"{Paddock_description}")
         Horse_status = False
@@ -675,11 +685,7 @@ L-eave
             if stay_ask.upper() in ('L', 'LEAVE'):
                 print('OK, you are leaving the arena.')
         return Tack_temp
-    def main(self):
-        Horse = False
-        Tacked_Up = False
-        Brushed = False
-        inventory = []
+    def main(self, Horse=False, Tacked_Up=False, Brushed=False, inventory=[], Horse_name='', Horse_gender=''):
         Map = """
      	    _____________
      	   |             |
@@ -742,8 +748,10 @@ when they aren't being used. It includes a hay net.
 """
         print (f"{Intro}")
         print (f"{Map}")
-        Horse_name = input("What is your horse's name?\n")
-        Horse_gender = input("What gender is your horse? (F-emale or M-ale)\n")
+        if Horse_name == '':
+            Horse_name = input("What is your horse's name?\n")
+        if Horse_gender == '':
+            Horse_gender = input("What gender is your horse? (F-emale or M-ale)\n")
         while Horse_gender.upper() not in ('F', 'FEMALE', 'M', 'MALE'):
             print ("Invalid input, please try again.")
             Horse_gender = input("What gender is your horse? (F-emale or M-ale)\n")
@@ -782,7 +790,7 @@ S-save game
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
-                save()
+                self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
         print(f"""
 Now that you've caught your horse, brush {horse_pronoun_her_him} down.
 """)
@@ -808,7 +816,7 @@ S-save game
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
-                save()
+                self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
         print(f"""
 Now that you have brushed off {Horse_name}, warm {horse_pronoun_her_him} up!
 Hint - Free lunge {horse_pronoun_her_him}
@@ -835,7 +843,7 @@ S-save game
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
-                save()
+                self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
         print(f"""
 Now that you have warmed up {Horse_name}, 
 get {horse_pronoun_her_him} tacked up and ready to ride!
@@ -862,7 +870,7 @@ S-save game
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
-                save()
+                self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
         print(f"""
 Now that you tacked up {Horse_name} and she's ready to ride,
 grab an obstacle to practice an event with!
@@ -889,7 +897,7 @@ S-save game
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
-                save()
+                self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
         print(f"""
 Now that you've chosen your event to work on, go ride!
 """)
@@ -915,7 +923,7 @@ S-save game
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
-                save()
+                self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
         print(f"""
 Now that you are done riding {Horse_name}, untack {horse_pronoun_her_him}.
 """)
@@ -941,7 +949,7 @@ S-save game
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
-                save()
+                self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
         print(f"""
 Now that you've untacked {Horse_name}, get {horse_pronoun_her_him} a treat.
 """)
@@ -967,7 +975,7 @@ S-save game
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
-                save()
+                self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
         print(f"""
 Now that you've rewarded {Horse_name} and given {horse_pronoun_her_him} a treat,
 give {horse_pronoun_her_him} a bath!
@@ -994,7 +1002,7 @@ S-save game
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
-                save()
+                self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
         print(f"""
 Now that {Horse_name} is clean, release {horse_pronoun_her_him} into the paddock for the night.
 """)
@@ -1020,11 +1028,31 @@ S-save game
             elif choice.upper() in ('A', 'ARENA'):
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
-                save()
+                self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
 def load():
         try:
-            with open('saved_file.bin', 'rb') as f:
-                play = pickle.load(f)
+            with open('Horse.pickle', 'rb') as f:
+                Horse = pickle.load(f)
+            with open('Tacked_Up.pickle', 'rb') as f:
+                Tacked_Up = pickle.load(f)
+            with open('Brushed.pickle', 'rb') as f:
+                Brushed = pickle.load(f)
+            with open('inventory.pickle', 'rb') as f:
+                inventory = pickle.load(f)
+            with open('Horse_name', 'rb') as f:
+                Horse_name = pickle.load(f)
+            with open('Horse_gender', 'rb') as f:
+                Horse_gender = pickle.load(f)
+            state_dictionary = {
+                'Horse': Horse,
+                'Tacked_Up': Tacked_Up,
+                'Brushed': Brushed,
+                'inventory': list(inventory),
+                'Horse_name': Horse_name,
+                'Horse_gender': Horse_gender
+            }
+            return state_dictionary
+
         except FileNotFoundError:
             print ("Game file not found")
-play = Play()
+# play = Play()
