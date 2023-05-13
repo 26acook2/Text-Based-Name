@@ -24,6 +24,8 @@ class Play:
                 return Horse_status
             elif release_choice.upper() in ('N', 'NO'):
                 print(f"OK, you are still leading {Horse_name}")
+                Horse_status = True
+                return Horse_status
             else:
                 print("Sorry, that wasn't a valid choice please try again.")
         if Horse == False:
@@ -1029,6 +1031,7 @@ S-save game
                 Tacked_Up = self.Arena(Arena_description, inventory, Horse, Horse_name, horse_pronoun_her_him, Tacked_Up)
             elif choice.upper() in ('S', 'SAVE GAME'):
                 self.save(Horse, Tacked_Up, Brushed, inventory, Horse_name, Horse_gender)
+        print("Congratulations! You finished the game!")
 def load():
         try:
             with open('Horse.pickle', 'rb') as f:
